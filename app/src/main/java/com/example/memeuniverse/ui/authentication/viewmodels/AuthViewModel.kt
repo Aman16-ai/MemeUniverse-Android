@@ -11,11 +11,18 @@ import com.example.memeuniverse.ui.authentication.LoginFragment
 import com.example.memeuniverse.ui.authentication.LoginFragmentDirections
 import com.example.memeuniverse.ui.authentication.RegisterFragmentDirections
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class autheViewModel(application: Application):AndroidViewModel(application) {
+class AuthViewModel(application: Application):AndroidViewModel(application) {
     private val dao:UserDao = UserDao()
-
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    fun checkUserState(view:View) {
+        if (auth.currentUser != null) {
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
+            view.findNavController().navigate(action)
+        }
+    }
     fun loginUser(view: View, email:String, password:String) {
         viewModelScope.launch {
             val result: AuthResult? = dao.login(email,password)

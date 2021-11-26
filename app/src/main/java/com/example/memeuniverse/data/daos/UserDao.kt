@@ -11,6 +11,7 @@ import kotlinx.coroutines.tasks.await
 class UserDao {
     //register,login
     private val mAuth = FirebaseAuth.getInstance()
+
      suspend fun login(email:String, password:String): AuthResult? {
          return try{
              mAuth.signInWithEmailAndPassword(email,password).await()

@@ -1,18 +1,15 @@
 package com.example.memeuniverse.ui.authentication
 
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.memeuniverse.R
-import com.example.memeuniverse.ui.authentication.viewmodels.autheViewModel
+import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
 
 
 class LoginFragment : Fragment() {
@@ -21,11 +18,13 @@ class LoginFragment : Fragment() {
     private lateinit var passwrodEt:EditText
     private lateinit var registertv:TextView
     private lateinit var bar:ProgressBar
-    private val viewModel:autheViewModel by activityViewModels()
+    private val viewModel:AuthViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

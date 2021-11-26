@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.memeuniverse.R
-import com.example.memeuniverse.ui.authentication.viewmodels.autheViewModel
+import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
 
 
 class RegisterFragment : Fragment() {
@@ -24,7 +24,7 @@ class RegisterFragment : Fragment() {
     private lateinit var lastNameEt: EditText
     private lateinit var logintv: TextView
 
-    private val viewModel:autheViewModel by activityViewModels()
+    private val viewModel:AuthViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
