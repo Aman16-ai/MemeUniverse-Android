@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "170278756589",
+    "project_id": "memeuniverse-90991",
+    "storage_bucket": "memeuniverse-90991.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170278756589:android:61a2345694917cf0b7ece4",
+        "android_client_info": {
+          "package_name": "com.example.memeuniverse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170278756589-eje1f03uvrn3n2mi7cj4uo33kipeo4c2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD26DbB4zqOoKe0gCNC7tqD8hbfnK7cwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170278756589-eje1f03uvrn3n2mi7cj4uo33kipeo4c2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
