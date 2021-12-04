@@ -1,6 +1,7 @@
 package com.example.memeuniverse.data.models
 
 data class Meme(
+    var uid:String?,
     val postLink:String,
     val subreddit:String,
     val title:String,

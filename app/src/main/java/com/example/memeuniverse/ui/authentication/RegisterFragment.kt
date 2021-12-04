@@ -44,7 +44,7 @@ class RegisterFragment : Fragment() {
         logintv = view.findViewById(R.id.login_fragment_textView)
 
         RegisterBtn.setOnClickListener{
-            viewModel.registerUser(it,emailEt.text.toString(),passwordEt.text.toString())
+            viewModel.registerUser(it,emailEt.text.toString(),passwordEt.text.toString(), firstNameEt.text.toString(),lastNameEt.text.toString())
         }
         logintv.setOnClickListener {
             val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()

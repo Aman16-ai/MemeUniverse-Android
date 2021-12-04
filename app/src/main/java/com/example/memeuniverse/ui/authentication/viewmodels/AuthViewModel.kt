@@ -1,7 +1,9 @@
 package com.example.memeuniverse.ui.authentication.viewmodels
 
 import android.app.Application
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
@@ -18,6 +20,7 @@ class AuthViewModel(application: Application):AndroidViewModel(application) {
     private val dao:UserDao = UserDao()
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     fun checkUserState(view:View) {
+        Log.d("userstate", "checkUserState: "+auth.currentUser)
         if (auth.currentUser != null) {
             val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
             view.findNavController().navigate(action)
@@ -26,19 +29,29 @@ class AuthViewModel(application: Application):AndroidViewModel(application) {
     fun loginUser(view: View, email:String, password:String) {
         viewModelScope.launch {
             val result: AuthResult? = dao.login(email,password)
-            result.let {
+            if(result != null) {
                 val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
                 view.findNavController().navigate(action)
             }
+            else {
+                Toast.makeText(getApplication(),"login failed",Toast.LENGTH_SHORT).show()
+            }
         }
     }
-    fun registerUser(view:View,email: String,password: String) {
+    fun registerUser(view:View,
+                     email: String,
+                     password: String,
+                     firstName:String,
+                     lastName:String) {
        viewModelScope.launch {
            val result:AuthResult?=dao.register(email,password)
-            result.let {
-                val action = RegisterFragmentDirections.actionRegisterFragmentToHomeScreenFragment()
-                view.findNavController().navigate(action)
-            }
+           result?.let {
+               val user = User(firstName,lastName, it.user?.uid,email,password)
+               dao.saveUserDetailsToFirebase(user)
+               val action = RegisterFragmentDirections.actionRegisterFragmentToHomeScreenFragment()
+               view.findNavController().navigate(action)
+           }
        }
     }
+
 }
