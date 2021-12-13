@@ -13,10 +13,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleObserver
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.memeuniverse.R
 import com.example.memeuniverse.data.models.Meme
+import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
 import com.example.memeuniverse.ui.memes.viewmodels.MemeViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -30,7 +33,7 @@ class HomeScreenFragment : Fragment() {
     private lateinit var sharebtn:FloatingActionButton
     private lateinit var meme: Meme
     private val model:MemeViewModel by activityViewModels()
-
+    private val authViewModel:AuthViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,6 +46,7 @@ class HomeScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home_screen, container, false)
         nextBtn = view.findViewById(R.id.fetchmemesbtn)
+        menubtn = view.findViewById(R.id.menubtn)
         saveMemeBtn = view.findViewById(R.id.savememebtn)
         memeImgView = view.findViewById(R.id.memeImageView)
         memeauthortv = view.findViewById(R.id.memeAuthorTextView)
@@ -55,6 +59,28 @@ class HomeScreenFragment : Fragment() {
             memetv.text = "Title : "+it.title
             Glide.with(requireContext()).load(it.url).into(memeImgView)
         })
+
+        menubtn.setOnClickListener {
+            val dialog = activity?.let { it1 -> BottomSheetDialog(it1) }
+            val dialogview = layoutInflater.inflate(R.layout.bottomsheetdialog,null)
+            val logoutButton:Button = dialogview.findViewById(R.id.logout_btn);
+            val aboutButton:Button = dialogview.findViewById(R.id.aboutbtn);
+            val settingsButton:Button = dialogview.findViewById(R.id.settingsbtn)
+
+            logoutButton.setOnClickListener {
+                authViewModel.logoutUser(it)
+                val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToLoginFragment()
+                view.findNavController().navigate(action)
+                if (dialog != null) {
+                    dialog.dismiss()
+                }
+            }
+            if (dialog != null) {
+                dialog.setContentView(dialogview)
+                dialog.show()
+            }
+
+        }
         sharebtn.setOnClickListener {
             model.sharememe(requireContext(),meme)
         }

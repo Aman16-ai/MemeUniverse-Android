@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
@@ -12,6 +13,8 @@ import com.example.memeuniverse.data.models.User
 import com.example.memeuniverse.ui.authentication.LoginFragment
 import com.example.memeuniverse.ui.authentication.LoginFragmentDirections
 import com.example.memeuniverse.ui.authentication.RegisterFragmentDirections
+import com.example.memeuniverse.ui.memes.HomeScreenFragment
+import com.example.memeuniverse.ui.memes.HomeScreenFragmentDirections
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -53,5 +56,11 @@ class AuthViewModel(application: Application):AndroidViewModel(application) {
            }
        }
     }
+    fun logoutUser(view:View) {
+        viewModelScope.launch {
+            dao.logout()
 
+            Toast.makeText(getApplication(),"Logout",Toast.LENGTH_SHORT).show()
+        }
+    }
 }

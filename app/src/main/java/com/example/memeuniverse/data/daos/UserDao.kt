@@ -43,4 +43,12 @@ class UserDao {
             return null
         }
     }
+
+    suspend fun logout() {
+        return try {
+            mAuth.signOut()
+        }catch (e:Exception) {
+            e.printStackTrace()
+        }
+    }
 }
