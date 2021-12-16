@@ -1,118 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.memes.HomeScreenFragment"
-    android:padding="20dp"
-    android:background="@color/black"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.card.MaterialCardView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:padding="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        android:layout_height="match_parent"
+        tools:context=".ui.memes.HomeScreenFragment"
+        android:padding="20dp"
+        android:background="@color/black">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- TODO: Update blank fragment layout -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
             android:padding="10dp"
-            >
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/memeImageView"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:src="@drawable/memeimage"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/memeAuthorTextView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/memeImageView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:text="Author : BeansInMyTea"
-                android:fontFamily="@font/abcfont"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                />
-            <TextView
-                android:id="@+id/memeTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/memeAuthorTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:text="Please."
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/abcfont"
-                android:layout_marginTop="10dp"
-                />
+                android:padding="10dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/memeImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:src="@drawable/memeimage"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fetchmemesbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#FFC107"
-        android:src="@drawable/ic_baseline_navigate_next_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/savememebtn"
+                <TextView
+                    android:id="@+id/memeAuthorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/memeImageView"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:text="Author : BeansInMyTea"
+                    android:fontFamily="@font/abcfont"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp" />
 
-        app:layout_constraintRight_toRightOf="parent" />
+                <TextView
+                    android:id="@+id/memeTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/memeAuthorTextView"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:text="Please."
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/abcfont"
+                    android:layout_marginTop="10dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/savememebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Next"
-        android:backgroundTint="#FFC107"
-        android:src="@drawable/ic_baseline_stars_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/sharememebtn"
-        android:layout_marginRight="10dp"
-        app:layout_constraintRight_toLeftOf="@+id/fetchmemesbtn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/sharememebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Next"
-        android:backgroundTint="#FFC107"
-        android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="10dp"
-        app:layout_constraintLeft_toRightOf="@+id/menubtn"
-        app:layout_constraintRight_toLeftOf="@+id/savememebtn" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/menubtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Next"
-        android:backgroundTint="#FFC107"
-        android:src="@drawable/ic_baseline_menu_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/sharememebtn" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fetchmemesbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#FFC107"
+            android:src="@drawable/ic_baseline_navigate_next_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/savememebtn"
+
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/savememebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Next"
+            android:backgroundTint="#FFC107"
+            android:src="@drawable/ic_baseline_stars_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/sharememebtn"
+            android:layout_marginRight="10dp"
+            app:layout_constraintRight_toLeftOf="@+id/fetchmemesbtn" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sharememebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Next"
+            android:backgroundTint="#FFC107"
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/menubtn"
+            app:layout_constraintRight_toLeftOf="@+id/savememebtn" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/menubtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Next"
+            android:backgroundTint="#FFC107"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/sharememebtn" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

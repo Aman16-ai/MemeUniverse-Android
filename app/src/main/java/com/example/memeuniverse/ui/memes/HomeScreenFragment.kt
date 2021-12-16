@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.memeuniverse.R
 import com.example.memeuniverse.data.models.Meme
+import com.example.memeuniverse.databinding.FragmentHomeScreenBinding
 import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
 import com.example.memeuniverse.ui.memes.viewmodels.MemeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -24,14 +25,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeScreenFragment : Fragment() {
-    private lateinit var memeImgView:ImageView
-    private lateinit var memetv:TextView
-    private lateinit var memeauthortv:TextView
-    private lateinit var nextBtn:FloatingActionButton
-    private lateinit var saveMemeBtn : FloatingActionButton
-    private lateinit var menubtn:FloatingActionButton
-    private lateinit var sharebtn:FloatingActionButton
+
     private lateinit var meme: Meme
+    private var _binding:FragmentHomeScreenBinding? = null
+    private val binding get() = _binding!!
     private val model:MemeViewModel by activityViewModels()
     private val authViewModel:AuthViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,23 +41,17 @@ class HomeScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home_screen, container, false)
-        nextBtn = view.findViewById(R.id.fetchmemesbtn)
-        menubtn = view.findViewById(R.id.menubtn)
-        saveMemeBtn = view.findViewById(R.id.savememebtn)
-        memeImgView = view.findViewById(R.id.memeImageView)
-        memeauthortv = view.findViewById(R.id.memeAuthorTextView)
-        sharebtn = view.findViewById(R.id.sharememebtn)
-        memetv = view.findViewById(R.id.memeTitleTextView)
+        _binding = FragmentHomeScreenBinding.inflate(layoutInflater)
+        val view = binding.root
         model.fetchMemes().observe(viewLifecycleOwner,{
             meme = it
             Log.d("memes", "onResponse: $it")
-            memeauthortv.text = "Author : " + it.author
-            memetv.text = "Title : "+it.title
-            Glide.with(requireContext()).load(it.url).into(memeImgView)
+            binding.memeAuthorTextView.text = "Author : " + it.author
+            binding.memeTitleTextView.text = "Title : "+it.title
+            Glide.with(requireContext()).load(it.url).into(binding.memeImageView)
         })
 
-        menubtn.setOnClickListener {
+        binding.menubtn.setOnClickListener {
             val dialog = activity?.let { it1 -> BottomSheetDialog(it1) }
             val dialogview = layoutInflater.inflate(R.layout.bottomsheetdialog,null)
             val logoutButton:Button = dialogview.findViewById(R.id.logout_btn);
@@ -81,13 +72,13 @@ class HomeScreenFragment : Fragment() {
             }
 
         }
-        sharebtn.setOnClickListener {
+        binding.sharememebtn.setOnClickListener {
             model.sharememe(requireContext(),meme)
         }
-        nextBtn.setOnClickListener {
+        binding.fetchmemesbtn.setOnClickListener {
             model.fetchMemes()
         }
-        saveMemeBtn.setOnClickListener {
+        binding.savememebtn.setOnClickListener {
             model.saveMeme(meme)
         }
         return view
