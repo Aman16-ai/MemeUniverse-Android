@@ -8,20 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.memeuniverse.R
 import com.example.memeuniverse.data.models.Meme
+
 import com.example.memeuniverse.databinding.FragmentHomeScreenBinding
 import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
 import com.example.memeuniverse.ui.memes.viewmodels.MemeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeScreenFragment : Fragment() {
@@ -57,14 +54,17 @@ class HomeScreenFragment : Fragment() {
             val logoutButton:Button = dialogview.findViewById(R.id.logout_btn);
             val aboutButton:Button = dialogview.findViewById(R.id.aboutbtn);
             val settingsButton:Button = dialogview.findViewById(R.id.settingsbtn)
-
+            val mymemesbtn:Button = dialogview.findViewById(R.id.my_memes_btn)
+            mymemesbtn.setOnClickListener {
+                val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToMyMemesFragment()
+                view.findNavController().navigate(action)
+                dialog?.dismiss()
+            }
             logoutButton.setOnClickListener {
                 authViewModel.logoutUser(it)
                 val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToLoginFragment()
                 view.findNavController().navigate(action)
-                if (dialog != null) {
-                    dialog.dismiss()
-                }
+                dialog?.dismiss()
             }
             if (dialog != null) {
                 dialog.setContentView(dialogview)

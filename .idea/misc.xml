@@ -8,8 +8,10 @@
         <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/activity_main.xml" value="0.17291666666666666" />
         <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/bottomsheetdialog.xml" value="0.17291666666666666" />
         <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/fragment_home_screen.xml" value="0.2" />
-        <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/fragment_login.xml" value="0.17291666666666666" />
+        <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/fragment_login.xml" value="0.12" />
+        <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/fragment_my_memes.xml" value="0.17291666666666666" />
         <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/fragment_register.xml" value="0.17291666666666666" />
+        <entry key="..\:/AndroidProjects/MemeUniverse/app/src/main/res/layout/my_memes_list.xml" value="0.17291666666666666" />
       </map>
     </option>
   </component>

@@ -31,9 +31,14 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentRegisterBinding.inflate(layoutInflater)
         val view = binding.root
-
+        viewModel.getUserAuthState().observe(viewLifecycleOwner) {
+            if(it) {
+                val action = RegisterFragmentDirections.actionRegisterFragmentToHomeScreenFragment()
+                view.findNavController().navigate(action)
+            }
+        }
         binding.registerBtn.setOnClickListener{
-            viewModel.registerUser(it,binding.registerEmailEt.text.toString(),binding.registerPasswordEt.text.toString(), binding.registerFirstNameEt.text.toString(),binding.registerLastNameEt.text.toString())
+            viewModel.registerUser(binding.registerEmailEt.text.toString(),binding.registerPasswordEt.text.toString(), binding.registerFirstNameEt.text.toString(),binding.registerLastNameEt.text.toString())
         }
         binding.loginFragmentTextView.setOnClickListener {
             val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
