@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.memeuniverse.R
 import com.example.memeuniverse.ui.authentication.viewmodels.AuthViewModel
+import com.example.memeuniverse.ui.memes.HomeScreenFragmentDirections
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class customBottomSheetDialog: BottomSheetDialogFragment() {
@@ -29,6 +31,8 @@ class customBottomSheetDialog: BottomSheetDialogFragment() {
 
         logoutButton.setOnClickListener {
             authViewModel.logoutUser(it)
+            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToLoginFragment()
+            view.findNavController().navigate(action)
         }
 
         return view;

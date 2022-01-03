@@ -27,9 +27,18 @@ class LoginFragment : Fragment() {
     ): View? {
         _binding = FragmentLoginBinding.inflate(layoutInflater)
         val view = binding.root
+        viewModel.getUserAuthState().observe(viewLifecycleOwner) {
+            if(it!=null && it != false) {
+                val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
+                view.findNavController().navigate(action)
+                Toast.makeText(context,"login",Toast.LENGTH_SHORT).show()
+            }
 
+        }
         binding.loginBtn.setOnClickListener{
-            viewModel.loginUser(it,binding.loginEmailEt.text.toString(),binding.loginPasswordEt.text.toString())
+            viewModel.loginUser(binding.loginEmailEt.text.toString(),binding.loginPasswordEt.text.toString())
+            val x = viewModel.getUserAuthState().value
+            Toast.makeText(context,"state : "+x,Toast.LENGTH_SHORT).show()
         }
          binding.registerFragmentTextView.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()

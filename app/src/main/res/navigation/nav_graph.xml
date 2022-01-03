@@ -49,5 +49,17 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_myMemesFragment"
+            app:destination="@id/myMemesFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_out"
+            app:popExitAnim="@android:anim/slide_in_left" />
     </fragment>
+    <fragment
+        android:id="@+id/myMemesFragment"
+        android:name="com.example.memeuniverse.ui.memes.MyMemesFragment"
+        android:label="fragment_my_memes"
+        tools:layout="@layout/fragment_my_memes" />
 </navigation>

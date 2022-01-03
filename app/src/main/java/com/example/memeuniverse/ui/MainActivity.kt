@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private val auth:FirebaseAuth = FirebaseAuth.getInstance()
-    override fun onStart() {
-        super.onStart()
-        if(auth.currentUser!= null) {
-            navController.navigate(R.id.action_loginFragment_to_homeScreenFragment)
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        if(auth.currentUser!= null) {
+//            navController.navigate(R.id.action_loginFragment_to_homeScreenFragment)
+//        }
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

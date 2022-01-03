@@ -13,6 +13,9 @@ import com.example.memeuniverse.data.daos.MemeDao
 import com.example.memeuniverse.data.models.Meme
 import com.example.memeuniverse.data.services.MemeService
 import com.example.memeuniverse.ui.memes.HomeScreenFragment
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -25,21 +28,20 @@ class MemeViewModel(application: Application):AndroidViewModel(application) {
 
     private  var meme:MutableLiveData<Meme> = MutableLiveData()
     private  var dao:MemeDao = MemeDao()
-    public fun getSavedMemes() {
+    private var mymemes:MutableLiveData<List<QueryDocumentSnapshot>?> = MutableLiveData()
+    private var myMemesList : List<QueryDocumentSnapshot>? = ArrayList()
+    fun fetchmymemes() : MutableLiveData<List<QueryDocumentSnapshot>?> {
         viewModelScope.launch {
-            val doc = dao.getSavedMemes()
-            if (doc != null) {
-                for (i in doc) {
-                    Log.d("savedmemes", "getSavedMemes: "+i.get("title"))
-                }
-            }
+            myMemesList = dao.getSavedMemes()?.toList()
+            mymemes.value = myMemesList
         }
+        return mymemes
     }
+
     public fun saveMeme(meme: Meme) {
         viewModelScope.launch {
             if(dao.saveMemeToFireStore(meme)) {
                 Toast.makeText(getApplication(),"Meme saved",Toast.LENGTH_SHORT).show()
-                getSavedMemes()
             }
         }
     }
